@@ -1,9 +1,9 @@
 import UIKit
 
-func jsonToString(_ jsonData: Any) -> String {
+func jsonToString(_ jsonData: FlutterwaveDataResponse?) -> String {
     do {
         let data = try JSONEncoder().encode(jsonData);
-        let str = String(data: data, encoding: String.Encoding.utf8) else { return "" };
+        guard let str = String(data: data, encoding: String.Encoding.utf8) else { return "" };
         return str;
     } catch _ {
         return "";
