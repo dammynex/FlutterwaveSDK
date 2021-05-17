@@ -2,8 +2,8 @@ import UIKit
 
 func jsonToString(_ jsonData: Any) -> String {
     do {
-        let data = try JSONSerialization.data(withJSONObject: jsonData);
-        guard let str = String(data: data, encoding: String.Encoding.utf8) else { return "" };
+        let data = try JSONEncoder().encode(jsonData);
+        let str = String(data: data, encoding: String.Encoding.utf8) else { return "" };
         return str;
     } catch _ {
         return "";

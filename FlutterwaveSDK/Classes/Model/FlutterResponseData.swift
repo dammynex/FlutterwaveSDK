@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FlutterwaveDataResponse {
+public struct FlutterwaveDataResponse: Codable {
     public let txRef, flwRef, deviceFingerprint: String?
     public let amount, chargedAmount, appFee, merchantFee: Double?
     public let processorResponse, authModel, currency, ip: String?
