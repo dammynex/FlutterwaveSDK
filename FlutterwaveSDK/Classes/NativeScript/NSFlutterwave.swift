@@ -1,6 +1,6 @@
 import UIKit
 
-func jsonToString(_ jsonData: [String:Any]) -> String {
+func jsonToString(_ jsonData: Any) -> String {
     do {
         let data = try JSONSerialization.data(withJSONObject: jsonData);
         guard let str = String(data: data, encoding: String.Encoding.utf8) else { return "" };
@@ -26,13 +26,13 @@ public class NSFlutterwave: UIViewController, FlutterwavePayProtocol {
     public var amount:String?
     public var delegate: NSFlutterwaveDelegate?
     
-    public func tranasctionSuccessful(flwRef: String?, responseData: [String : Any]?) {
-        let data = jsonToString(responseData ?? ["": ""])
+    public func tranasctionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
+        let data = jsonToString(responseData)
         self.delegate?.onSuccess(flwRef ?? "", data)
     }
     
-    public func tranasctionFailed(flwRef: String?, responseData: [String : Any]?) {
-        let data = jsonToString(responseData ?? ["": ""])
+    public func tranasctionFailed(flwRef: String?, responseData: FlutterwaveDataResponse?) {
+        let data = jsonToString(responseData)
         self.delegate?.onError(flwRef ?? "", data)
     }
 
