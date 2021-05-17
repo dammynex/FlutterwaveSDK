@@ -36,6 +36,10 @@ public class NSFlutterwave: UIViewController, FlutterwavePayProtocol {
         self.delegate?.onError(flwRef ?? "", data)
     }
 
+    public func onDismiss() {
+        self.delegate?.onDismiss()
+    }
+
     public func initFlutterwave(view: UIViewController) -> NSFlutterwave {
 
         let config = FlutterwaveConfig.sharedConfig()
